@@ -1,18 +1,18 @@
-//  Add your code here
 const { Schema, model } = require("mongoose");
 
 // TODO: Please make sure you edit the User model to whatever makes sense in this case
-const celebSchema = new Schema(
+const movieSchema = new Schema(
   {
-    name: {
+    title: {
       type: String,
     },
-    occupation: {
+    genre: {
       type: String,
     },
-    catchPhrase: {
+    plot: {
       type: String,
     },
+    cast: [{ type: Schema.Types.ObjectId, ref: "Celeb" }],
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
@@ -20,6 +20,6 @@ const celebSchema = new Schema(
   }
 );
 
-const Celeb = model("Celeb", celebSchema);
+const Movie = model("Movie", movieSchema);
 
-module.exports = Celeb;
+module.exports = Movie;
